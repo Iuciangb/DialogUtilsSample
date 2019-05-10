@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DialogUtilsSample</string>
+
+    <string name="text_confirm">Confirm</string>
+    <string name="text_cancel">Cancel</string>
+</resources>
