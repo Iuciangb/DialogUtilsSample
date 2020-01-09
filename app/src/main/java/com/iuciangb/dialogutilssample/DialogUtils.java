@@ -76,7 +76,7 @@ public class DialogUtils {
     public static void showOnlyAlertDialog(Context context, int titleId, int messageId, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, builder, titleId);
         builder.setMessage(messageId);
         builder.setPositiveButton(R.string.text_confirm, null);
@@ -91,7 +91,7 @@ public class DialogUtils {
     public static void showOnlyAlertDialog(Context context, int titleId, String message, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, builder, titleId);
         builder.setMessage(message);
         builder.setPositiveButton(R.string.text_confirm, null);
@@ -106,7 +106,7 @@ public class DialogUtils {
     public static void showPositiveButtonAlertDialog(Context context, int titleId, int messageId, PositiveButtonListener positiveButtonListener, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, alertDialogBuilder, titleId);
         alertDialogBuilder.setMessage(messageId);
         alertDialogBuilder.setPositiveButton(R.string.text_confirm, positiveButtonListener);
@@ -121,7 +121,7 @@ public class DialogUtils {
     public static void showPositiveButtonAlertDialog(Context context, int titleId, String message, PositiveButtonListener positiveButtonListener, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, alertDialogBuilder, titleId);
         alertDialogBuilder.setMessage(message);
         alertDialogBuilder.setPositiveButton(R.string.text_confirm, positiveButtonListener);
@@ -136,7 +136,7 @@ public class DialogUtils {
     public static void showNegativeButtonAlertDialog(Context context, AlertDialogText alertDialogText, NegativeButtonListener negativeButtonListener, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, alertDialogBuilder, alertDialogText.getTitleId());
         alertDialogBuilder.setMessage(alertDialogText.getMessage());
         alertDialogBuilder.setPositiveButton(alertDialogText.getPositionButtonTextId(), null);
@@ -154,7 +154,7 @@ public class DialogUtils {
                                                 PositiveButtonListener positiveButtonListener, NegativeButtonListener negativeButtonListener, boolean isEnableCancel) {
         dismissDialog();
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, getStyleId());
         setTitle(context, alertDialogBuilder, alertDialogText.getTitleId());
         if (!TextUtils.isEmpty(alertDialogText.getMessage())) {
             alertDialogBuilder.setMessage(alertDialogText.getMessage());
@@ -189,5 +189,14 @@ public class DialogUtils {
 
     private static boolean isStringResValid(Context context, int textId) {
         return FunctionUtils.isStringResValid(context, textId);
+    }
+
+    /**
+     * 想修改原生Dialog樣式都可在styles.xml裡的DialogUtilTheme新增修改
+     *
+     * @return
+     */
+    private static int getStyleId() {
+        return R.style.DialogUtilTheme;
     }
 }
